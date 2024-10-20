@@ -26,7 +26,7 @@ isn't feasible for this problem. The sorting step is necessary for the greedy ap
 """
 
 class Solution:
-    def asteroidsDestroyed(self, mass: int, asteroids: List[int]) -> bool:
+    def asteroidsDestroyed(self, mass: int, asteroids: list[int]) -> bool:
         
         ## O(n log n) Solution. 
         
