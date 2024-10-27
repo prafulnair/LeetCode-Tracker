@@ -36,6 +36,34 @@ Follow up: Your algorithm's time complexity must be better than O(n log n), wher
 
 """
 
+import heapq 
+class Solution:
+    def topKFrequent(self, nums: list[int], k: int) -> list[int]:
+        
+        heap = []
+
+        map = {}
+
+        for n in nums:
+            if n in map:
+                map[n] += 1
+            else:
+                map[n] = 1
+        
+        for key, value in map.items():
+            element = [key, value]
+            heap.append(element)
+        print(heap)
+        heapq.heapify(heap)
+        result = []
+
+        while (k!=0):
+            ele = heapq.heappop(heap)
+            result.append(ele[0])
+            k -= 1
+
+        return result
+
 class Solution:
     def topKFrequent(self, nums: list[int], k: int) -> list[int]:
         my_maps = {}
@@ -104,3 +132,26 @@ class Solution:
         result = result[:k]  
         return result
 
+"""
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        # Create a hashmap to store value and its frequence
+        map = {}
+
+        # Store the elements of nums and its freq
+        for n in nums:
+            map[n] = map.get(n,0) + 1
+
+        # One way to sort the hashmap by its value. 
+        map = dict(sorted(map.items(), key=lambda item: item[1], reverse = True))
+
+        # Final list to store the result
+        result = []
+        for key in map.keys():
+            result.append(key)
+
+        # just represent the last 
+        # result = result[-k:]    # If reverse is not set as True, you have to use this   
+        result = result[:k]  
+        return result
+"""
