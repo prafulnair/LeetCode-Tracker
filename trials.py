@@ -187,3 +187,25 @@ class Solution:
         
 #         return True
         
+
+
+
+class Solution:
+    def findMin(self, nums: List[int]) -> int:
+        minn = float("inf")
+        
+        def searchMin(p, q):
+            # Base case: if the range is invalid
+            if p > q:
+                return float("inf")  # Return a value greater than any possible minimum
+            
+            mid = p + (q - p) // 2
+            
+            # Check if the middle element is less than the minimum
+            minLeft = searchMin(p, mid - 1)
+            minRight = searchMin(mid + 1, q)
+            
+            return min(nums[mid], minLeft, minRight)
+            
+        
+        return searchMin(0,len(nums)-1)
