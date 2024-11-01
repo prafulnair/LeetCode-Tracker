@@ -1,32 +1,32 @@
+from typing import Optional
 # Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
-
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
 class Solution:
     def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
-        result1 = ""
-        result2 = ""
-        def navigate(node, result):
-            if not node:
-                return result + "None"
-              
-            result = result + str(node.val)
-            result = navigate(node.left, result) 
-            result = navigate(node.right, result)
-
-            return result
-
-        result1 = navigate(p, result1)
-        result2 = navigate(q, result2)
-        print(result1, result2)
-        if result1 == result2:
-            return True
-        return False
+        
+        def explore(node1, node2):
+            if (node1 and not node2) or (node2 and not node1 ):
+                return False
             
+            if not node1 and not node2:
+                return True
 
+            if node1.val != node2.val:
+                return False
+            
+            leftGood = explore(node1.left, node2.left)
+            rightGood = explore(node1.right, node2.right)
+
+            if leftGood == False or rightGood == False:
+                return False
+            else:
+                return True
+
+        return explore(p, q)
 """
 100. Same Tree
 Solved
