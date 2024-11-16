@@ -27,9 +27,6 @@ def explore(grid, r, c, seen):
     return True #i have finished exploring a new island (neighbours of the node)
 
 
-
-
-
 def countIsland(grid):
     count = 0 # for island counting
     seen  = set()
@@ -42,8 +39,6 @@ def countIsland(grid):
     return (count)
 
  
-
-
 island_grid = [
   ['W', 'L', 'W', 'W', 'W'],
   ['W', 'L', 'W', 'W', 'W'],
