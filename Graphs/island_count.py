@@ -21,7 +21,7 @@ def explore(grid, r, c, seen):
 
     explore(grid, r-1, c, seen) # explore up
     explore(grid, r+1, c, seen) # explore down
-    explore(grid, r, c-1, seen) # explore left
+    explore(grid, r, c-1, seen)  # explore left
     explore(grid, r, c+1, seen) # explore right
 
     return True #i have finished exploring a new island (neighbours of the node)
