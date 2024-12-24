@@ -15,6 +15,21 @@ class Solution:
         return count_s == count_t
     
 
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        
+        if len(s) != len(t):
+            return False
+
+        hashmap = {}
+
+        for i in range(len(s)):
+            hashmap[s[i]] = hashmap.get(s[i], 0) + 1
+            hashmap[t[i]] = hashmap.get(t[i], 0) - 1
+
+        return all(val == 0 for val in hashmap.values())
+    
+
 """
 Given two strings s and t, return true if t is an anagram of s, and false otherwise.
 
