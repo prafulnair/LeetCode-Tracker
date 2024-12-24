@@ -155,3 +155,33 @@ class Solution:
         result = result[:k]  
         return result
 """
+
+"""
+LATEST SOLUTION
+"""
+
+import heapq
+
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        
+        mapp = {}
+        for n in nums:
+            if n in mapp:
+                mapp[n] += 1
+            else:
+                mapp[n] = 1
+        
+        result = []
+        for key, value in mapp.items():
+            tupp = (-value, key)
+            result.append(tupp)
+        
+        heapq.heapify(result)
+
+        final_result = []
+        for _ in range(k):
+            element = heapq.heappop(result)
+            final_result.append(element[1])
+
+        return final_result
