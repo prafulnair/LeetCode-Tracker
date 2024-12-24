@@ -78,3 +78,30 @@ class Solution:
 strs = ["eat","tea","tan","ate","nat","bat"]
 #Solution.groupAnagrams(Solution, strs)
 print(Solution.groupAnagrams2(Solution,strs))
+
+
+"""
+Another better solutiuon that is O(N.M) where M is the avg length of each word and N is the length of strs
+"""
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        
+        def helperFunction(word):
+            count = [0] * 26
+
+            for char in word:
+                count[ord(char) - ord('a')] += 1
+            
+            return tuple(count)
+        
+        
+        hashmap = {} 
+        for word in strs:
+
+            key  = helperFunction(word)
+            if key in hashmap:
+                hashmap[key].append(word)
+            else:
+                hashmap[key] = [word]
+
+        return list(hashmap.values())
